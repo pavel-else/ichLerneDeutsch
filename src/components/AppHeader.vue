@@ -14,7 +14,9 @@
         </v-navigation-drawer>
         <v-toolbar class="primary" app dark>
             <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
-            <v-toolbar-title v-text="'Ich lerne Deutsch'"></v-toolbar-title>
+            <router-link to="/" tag="span" style="cursor: pointer">
+                <v-toolbar-title v-text="'Ich lerne Deutsch'"></v-toolbar-title>
+            </router-link>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn flat v-for="(item, index) in menuItems" :key="index" :to="item.route">
