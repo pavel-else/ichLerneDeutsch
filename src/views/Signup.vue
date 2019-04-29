@@ -22,6 +22,7 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="primary" @click.prevent="signUp()" :disabled="processing">Regitration</v-btn>
+                isAuth: {{ isAuth }}
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -48,6 +49,16 @@ export default {
       },
       processing() {
         return this.$store.getters.getProcessing
+      },
+      isAuth() {
+        return this.$store.getters.isAuth
+      }
+    },
+    watch: {
+      isAuth(value) {
+        if (value === true) {
+          this.$router.push("/")
+        }
       }
     }
 }

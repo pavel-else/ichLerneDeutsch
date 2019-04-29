@@ -3,19 +3,22 @@ import firebase from 'firebase'
 export default {
   state: {
     user: {
-      isAuthenticated: false,
+      isAuth: false,
       uid: null
     }
   },
+  getters: {
+    isAuth: state => state.user.isAuth
+  },
   mutations: {
     SET_USER(state, payload) {
-      state.isAuthenticated = true
-      state.uid = payload
+      state.user.isAuth = true
+      state.user.uid = payload
     }
   },
   actions: {
     SIGNUP({ commit }, user) {
-      commit('SET_PROCESSING', true)
+      commit('SET_PROCESSING', true )
 
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
       .then(user => {
@@ -27,6 +30,5 @@ export default {
         commit('SET_ERROR', error.message)
       });
     }
-
   }
 }
