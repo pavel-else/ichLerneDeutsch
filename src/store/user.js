@@ -14,7 +14,7 @@ export default {
     }
   },
   actions: {
-    SIGNUP(commit, user) {
+    SIGNUP({ commit }, user) {
       commit('SET_PROCESSING', 'true')
 
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)

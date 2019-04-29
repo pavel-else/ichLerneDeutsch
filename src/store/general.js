@@ -16,6 +16,6 @@ export default {
   },
   getters: {
     getProcessing: state => state.processing,
-    getError: state => state.processing
+    getError: state => state.error
   }
 }
