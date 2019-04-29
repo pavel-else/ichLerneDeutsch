@@ -15,15 +15,15 @@ export default {
   },
   actions: {
     SIGNUP({ commit }, user) {
-      commit('SET_PROCESSING', 'true')
+      commit('SET_PROCESSING', true)
 
       firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
       .then(user => {
-        commit('SET_PROCESSING', 'false')
+        commit('SET_PROCESSING', false)
         commit('SET_USER', user.uid)
       })
       .catch(function(error) {
-        commit('SET_PROCESSING', 'false')
+        commit('SET_PROCESSING', false)
         commit('SET_ERROR', error.message)
       });
     }

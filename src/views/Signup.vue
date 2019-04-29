@@ -21,7 +21,7 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click.prevent="signUp()">Regitration</v-btn>
+                <v-btn color="primary" @click.prevent="signUp()" :disabled="processing">Regitration</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -45,6 +45,9 @@ export default {
     computed: {
       error() {
         return this.$store.getters.getError
+      },
+      processing() {
+        return this.$store.getters.getProcessing
       }
     }
 }
