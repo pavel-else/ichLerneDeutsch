@@ -8,15 +8,23 @@ export default {
     }
   },
   mutations: {
-
+    SET_USER(state, payload) {
+      state.isAuthenticated = true
+      state.uid = payload
+    }
   },
   actions: {
     SIGNUP(commit, user) {
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
+      commit('SET_PROCESSING', 'true')
+
+      firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+      .then(user => {
+        commit('SET_PROCESSING', 'false')
+        commit('SET_USER', user.uid)
+      })
+      .catch(function(error) {
+        commit('SET_PROCESSING', 'false')
+        commit('SET_ERROR', error.message)
       });
     }
 
