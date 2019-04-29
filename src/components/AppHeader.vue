@@ -36,39 +36,46 @@ export default {
         }
     },
     computed: {
+        isAuth() {
+            return this.$store.getters.isAuth
+        },
         menuItems() {
-            return [
-                {
-                    icon: 'visibility',
-                    title: 'Читать',
-                    route: '/books'
-                },
-                {
-                    icon: 'extension',
-                    title: 'Учить слова',
-                    route: '/words'
-                },
-                {
-                    icon: 'account_circle',
-                    title: 'Мой кабинет',
-                    route: '/profile'
-                },
-                {
-                    icon: 'exit_to_app',
-                    title: 'Выйти',
-                    route: '/logout'
-                },
-                {
-                    icon: 'input',
-                    title: 'Login',
-                    route: '/signin'
-                },
-                {
-                    icon: 'lock_open',
-                    title: 'Register',
-                    route: '/signup'
-                },
-            ]
+            return this.isAuth 
+            ? [
+                    {
+                        icon: 'visibility',
+                        title: 'Читать',
+                        route: '/books'
+                    },
+                    {
+                        icon: 'extension',
+                        title: 'Учить слова',
+                        route: '/words'
+                    },
+                    {
+                        icon: 'account_circle',
+                        title: 'Мой кабинет',
+                        route: '/profile'
+                    },
+                    {
+                        icon: 'exit_to_app',
+                        title: 'Выйти',
+                        route: '/logout'
+                    },
+                ]
+            : [
+                    {
+                        icon: 'input',
+                        title: 'Login',
+                        route: '/signin'
+                    },
+                    {
+                        icon: 'lock_open',
+                        title: 'Register',
+                        route: '/signup'
+                    },
+                ]
+
         }
     }
 }
